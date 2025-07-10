@@ -16,8 +16,6 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
-    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -56,31 +54,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.9707207
-        functionName: OnCharacterEndAttack
-        data: 
-        objectReferenceParameter: {fileID: 521607821736031013, guid: 95f292a7401da584fb778981c4637e77,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.3693694
-        functionName: OnStartTracingHit
-        data: 
-        objectReferenceParameter: {fileID: 521607821736031013, guid: 95f292a7401da584fb778981c4637e77,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.49549547
-        functionName: OnEndTracingHit
-        data: 
-        objectReferenceParameter: {fileID: 521607821736031013, guid: 95f292a7401da584fb778981c4637e77,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

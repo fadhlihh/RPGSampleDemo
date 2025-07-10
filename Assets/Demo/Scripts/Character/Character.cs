@@ -11,9 +11,6 @@ public abstract class Character : MonoBehaviour
     [SerializeField]
     private Transform _lookPivot;
 
-    public UnityEvent OnDamage;
-    public UnityEvent OnDeath;
-
     public CharacterMovement CharacterMovement { get { return _characterMovement; } }
     public CharacterAnimation CharacterAnimation { get { return _characterAnimation; } }
     public Transform LookPivot { get => _lookPivot; }

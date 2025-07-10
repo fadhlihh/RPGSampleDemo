@@ -54,15 +54,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 1
-        functionName: OnCharacterEndHeavyAttack
-        data: 
-        objectReferenceParameter: {fileID: 521607821736031013, guid: 95f292a7401da584fb778981c4637e77,
-          type: 3}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
