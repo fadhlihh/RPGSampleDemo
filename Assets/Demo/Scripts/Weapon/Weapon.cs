@@ -89,7 +89,7 @@ public abstract class Weapon : MonoBehaviour
                 if (!_alreadyHit.Contains(hit))
                 {
                     _alreadyHit.Add(hit);
-                    // Damage Enemy
+                    hit.GetComponent<IDamagable>().Damage(new DamageData(_ownerCharacter, _damage + _damageModifier, hit.ClosestPoint(center)));
                 }
             }
         }
