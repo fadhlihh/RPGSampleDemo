@@ -7,6 +7,7 @@ public class InputManager : Singleton<InputManager>, IGeneralActions
 {
     public Action<Vector2> OnMoveInput;
     public Action<bool> OnSprintInput;
+    public Action OnRollInput;
 
     private IA_Default _inputAction;
     public InputManager()
@@ -44,6 +45,14 @@ public class InputManager : Singleton<InputManager>, IGeneralActions
         if (context.canceled)
         {
             OnSprintInput?.Invoke(false);
+        }
+    }
+
+    public void OnRoll(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            OnRollInput?.Invoke();
         }
     }
 }

@@ -1,12 +1,23 @@
 using UnityEngine;
+using UnityEngine.Events;
 
-public class PlayerCharacter : Character
+public class PlayerCharacter : Character, IRolling
 {
-    public DirectionalCharacterMovement DirectionalCharacterMovement { get => CharacterMovement as DirectionalCharacterMovement; }
+    [SerializeField]
+    private UnityEvent _onCharacterRoll;
 
-    private void Start()
+    public DirectionalCharacterMovement DirectionalCharacterMovement { get => CharacterMovement as DirectionalCharacterMovement; }
+    public UnityEvent OnCharacterRoll => _onCharacterRoll;
+    public bool IsRolling { get; private set; }
+
+    private void OnEnable()
     {
         BindingInput();
+    }
+
+    private void OnDisable()
+    {
+        UnBindingInput();
     }
 
     private void BindingInput()
@@ -14,5 +25,33 @@ public class PlayerCharacter : Character
         InputManager.Instance.SetGeneralInputEnabled(true);
         InputManager.Instance.OnMoveInput += DirectionalCharacterMovement.AddMovementInput;
         InputManager.Instance.OnSprintInput += DirectionalCharacterMovement.Sprint;
+        InputManager.Instance.OnRollInput += Roll;
+    }
+
+    private void UnBindingInput()
+    {
+        InputManager.Instance.OnMoveInput -= DirectionalCharacterMovement.AddMovementInput;
+        InputManager.Instance.OnSprintInput -= DirectionalCharacterMovement.Sprint;
+        InputManager.Instance.OnRollInput -= Roll;
+    }
+
+    public void Roll()
+    {
+        bool isMoving = DirectionalCharacterMovement.MoveDirection.magnitude > 0.01f;
+        if (isMoving)
+        {
+            DirectionalCharacterMovement.IsAbleToMove = false;
+            IsRolling = true;
+            Transform cameraTransform = Camera.main.transform;
+            float rotationAngle = GameHelper.GetRotationAngleFromInput(DirectionalCharacterMovement.MoveDirection.x, DirectionalCharacterMovement.MoveDirection.z) + cameraTransform.eulerAngles.y;
+            transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
+            OnCharacterRoll?.Invoke();
+        }
+    }
+
+    public void EndRoll()
+    {
+        IsRolling = false;
+        DirectionalCharacterMovement.IsAbleToMove = true;
     }
 }
