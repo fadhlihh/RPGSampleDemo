@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4516829655628676694}
   - component: {fileID: 6379803242479619870}
   - component: {fileID: 1337207599105518576}
-  - component: {fileID: 6974090579269797218}
+  - component: {fileID: 3238125870030880102}
   m_Layer: 0
   m_Name: Basic Sword
   m_TagString: Untagged
@@ -87,7 +87,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6974090579269797218
+--- !u!114 &3238125870030880102
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,14 +96,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2204249638584032862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Script: {fileID: 11500000, guid: f21671fe55d723e498153dec7b6c7280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SerializedVersion: 0
-  m_OverrideArea: 0
-  m_Area: 0
-  m_OverrideGenerateLinks: 0
-  m_GenerateLinks: 0
-  m_IgnoreFromBuild: 1
-  m_ApplyToChildren: 1
-  m_AffectedAgents: ffffffff
+  _name: Basic Sword
+  _icon: {fileID: 21300000, guid: 5fd50594014b70e48bd6993443d46b32, type: 3}
+  _damage: 30
+  _socket: {fileID: 0}
+  _ownerCharacter: {fileID: 0}
