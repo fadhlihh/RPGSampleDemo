@@ -13,6 +13,7 @@ public class InputManager : Singleton<InputManager>, IGeneralActions
     public Action OnStartBlockInput;
     public Action OnStopBlockInput;
     public Action OnLockTargetInput;
+    public Action OnSwitchWeaponInput;
 
     private IA_Default _inputAction;
     public InputManager()
@@ -93,6 +94,14 @@ public class InputManager : Singleton<InputManager>, IGeneralActions
         if (context.performed)
         {
             OnLockTargetInput?.Invoke();
+        }
+    }
+
+    public void OnSwitchWeapon(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            OnSwitchWeaponInput?.Invoke();
         }
     }
 }

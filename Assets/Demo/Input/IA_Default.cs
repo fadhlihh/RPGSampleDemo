@@ -153,6 +153,15 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""9ff3a1b2-f3a3-4042-ad23-dc511a5a2be4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -331,6 +340,17 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
                     ""action"": ""LockTarget"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""094ecb58-583a-4f56-be05-c13f8bd37826"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -374,6 +394,7 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
         m_General_HeavyAttack = m_General.FindAction("HeavyAttack", throwIfNotFound: true);
         m_General_Block = m_General.FindAction("Block", throwIfNotFound: true);
         m_General_LockTarget = m_General.FindAction("LockTarget", throwIfNotFound: true);
+        m_General_SwitchWeapon = m_General.FindAction("SwitchWeapon", throwIfNotFound: true);
     }
 
     ~@IA_Default()
@@ -461,6 +482,7 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
     private readonly InputAction m_General_HeavyAttack;
     private readonly InputAction m_General_Block;
     private readonly InputAction m_General_LockTarget;
+    private readonly InputAction m_General_SwitchWeapon;
     /// <summary>
     /// Provides access to input actions defined in input action map "General".
     /// </summary>
@@ -500,6 +522,10 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "General/LockTarget".
         /// </summary>
         public InputAction @LockTarget => m_Wrapper.m_General_LockTarget;
+        /// <summary>
+        /// Provides access to the underlying input action "General/SwitchWeapon".
+        /// </summary>
+        public InputAction @SwitchWeapon => m_Wrapper.m_General_SwitchWeapon;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -547,6 +573,9 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
             @LockTarget.started += instance.OnLockTarget;
             @LockTarget.performed += instance.OnLockTarget;
             @LockTarget.canceled += instance.OnLockTarget;
+            @SwitchWeapon.started += instance.OnSwitchWeapon;
+            @SwitchWeapon.performed += instance.OnSwitchWeapon;
+            @SwitchWeapon.canceled += instance.OnSwitchWeapon;
         }
 
         /// <summary>
@@ -579,6 +608,9 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
             @LockTarget.started -= instance.OnLockTarget;
             @LockTarget.performed -= instance.OnLockTarget;
             @LockTarget.canceled -= instance.OnLockTarget;
+            @SwitchWeapon.started -= instance.OnSwitchWeapon;
+            @SwitchWeapon.performed -= instance.OnSwitchWeapon;
+            @SwitchWeapon.canceled -= instance.OnSwitchWeapon;
         }
 
         /// <summary>
@@ -694,5 +726,12 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnLockTarget(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SwitchWeapon" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSwitchWeapon(InputAction.CallbackContext context);
     }
 }

@@ -89,4 +89,9 @@ public class CombatAnimation : CharacterAnimation
         _animator.SetLayerWeight(1, 0);
         OnEndBlockAnimation?.Invoke();
     }
+
+    public void OnCharacterSwitchWeapon(EWeaponType type)
+    {
+        _animator.SetBool("IsUsingBow", (type == EWeaponType.Range));
+    }
 }

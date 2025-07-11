@@ -59,6 +59,7 @@ public class PlayerCharacter : Character, IRolling, IDamagable
         InputManager.Instance.OnHeavyAttackInput += WeaponEquipmentManager.HeavyAttack;
         InputManager.Instance.OnStartBlockInput += CharacterDefense.StartBlock;
         InputManager.Instance.OnStopBlockInput += CharacterDefense.StopBlock;
+        InputManager.Instance.OnSwitchWeaponInput += WeaponEquipmentManager.NextWeapon;
     }
 
     private void UnBindingInput()
@@ -70,6 +71,7 @@ public class PlayerCharacter : Character, IRolling, IDamagable
         InputManager.Instance.OnHeavyAttackInput -= WeaponEquipmentManager.HeavyAttack;
         InputManager.Instance.OnStartBlockInput -= CharacterDefense.StartBlock;
         InputManager.Instance.OnStopBlockInput -= CharacterDefense.StopBlock;
+        InputManager.Instance.OnSwitchWeaponInput -= WeaponEquipmentManager.NextWeapon;
     }
 
     public void Roll()
