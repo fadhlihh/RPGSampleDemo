@@ -8,6 +8,11 @@ public class CharacterAnimation : MonoBehaviour
 
     protected Character _ownerCharacter;
 
+    public void PlayFootstepSFX()
+    {
+        SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.Footstep, 0.5f, 1);
+    }
+
     protected void Awake()
     {
         if (!_animator)

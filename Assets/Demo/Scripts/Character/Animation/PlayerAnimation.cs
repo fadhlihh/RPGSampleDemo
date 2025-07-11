@@ -29,4 +29,9 @@ public class PlayerAnimation : CombatAnimation
     {
         _animator.SetBool("IsLockTarget", false);
     }
+
+    public void PlayRollSFX()
+    {
+        SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.Roll, 0.75f, 1);
+    }
 }

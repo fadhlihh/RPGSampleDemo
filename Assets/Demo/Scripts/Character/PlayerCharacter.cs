@@ -124,6 +124,7 @@ public class PlayerCharacter : Character, IRolling, IDamagable, IStamina
             {
                 enemyCharacter.BounceBack();
                 DecreaseStamina(30);
+                SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.SwordHitBlock, 0.5f, 1);
                 if (!GetIsStaminaAvailable(30))
                 {
                     CharacterDefense.StopBlock();

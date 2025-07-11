@@ -66,7 +66,7 @@ public abstract class Weapon : MonoBehaviour
         Combo = 1;
     }
 
-    public void StartTraceHit()
+    public virtual void StartTraceHit()
     {
         IsTracingHit = true;
         _alreadyHit.Clear();

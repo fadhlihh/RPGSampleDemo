@@ -26,6 +26,13 @@ public class SpellWeapon : Weapon
             GameObject spellObject = Instantiate(_spellProjectilePrefabs, _spellProjectileSpawner.position, _spellProjectileSpawner.rotation);
             ProjectileSpell projectileSpell = spellObject.GetComponent<ProjectileSpell>();
             projectileSpell.Launch(spellObject.transform.forward, _distance, 30);
+            SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.SpellFire, 0.5f, 1);
         }
+    }
+
+    public override void StartTraceHit()
+    {
+        base.StartTraceHit();
+        SFXManager.Instance.PlayAudioWithRandomPitch(ESFXType.Woosh, 0.5f, 1);
     }
 }
