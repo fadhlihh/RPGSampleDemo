@@ -93,5 +93,6 @@ public class CombatAnimation : CharacterAnimation
     public void OnCharacterSwitchWeapon(EWeaponType type)
     {
         _animator.SetBool("IsUsingBow", (type == EWeaponType.Range));
+        _animator.SetBool("IsUsingSpell", (type == EWeaponType.Spell));
     }
 }

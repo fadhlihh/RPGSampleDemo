@@ -4846,6 +4846,7 @@ GameObject:
   - component: {fileID: 1870525986373404771}
   - component: {fileID: 7170341514892648496}
   - component: {fileID: 294331011707934969}
+  - component: {fileID: 7420553683245413500}
   m_Layer: 0
   m_Name: vfx_FireSpell
   m_TagString: Untagged
@@ -9717,3 +9718,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7420553683245413500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6462547940109628560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ab3efb6dbe0ed84eae21defb1d7f625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lifespan: 3
+  _damage: 30
+  _explosionPrefab: {fileID: 5162910912013668194, guid: cf82839c411151342a7b2337bda9fb34,
+    type: 3}

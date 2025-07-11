@@ -816,6 +816,116 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerStatusUI: {fileID: 1484776674}
   _weaponSlotUI: {fileID: 1004675347}
+--- !u!1001 &561284435
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1891017317}
+    m_Modifications:
+    - target: {fileID: -5569449977604626760, guid: 6c660f2791ba8d547a2d821d169693a8,
+        type: 3}
+      propertyPath: _socket
+      value: 
+      objectReference: {fileID: 1891017317}
+    - target: {fileID: -5569449977604626760, guid: 6c660f2791ba8d547a2d821d169693a8,
+        type: 3}
+      propertyPath: _distance
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: -5569449977604626760, guid: 6c660f2791ba8d547a2d821d169693a8,
+        type: 3}
+      propertyPath: _maxCombo
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -5569449977604626760, guid: 6c660f2791ba8d547a2d821d169693a8,
+        type: 3}
+      propertyPath: _ownerCharacter
+      value: 
+      objectReference: {fileID: 761140854}
+    - target: {fileID: -5569449977604626760, guid: 6c660f2791ba8d547a2d821d169693a8,
+        type: 3}
+      propertyPath: _hitableLayer.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: -5569449977604626760, guid: 6c660f2791ba8d547a2d821d169693a8,
+        type: 3}
+      propertyPath: _spellProjectilePrefabs
+      value: 
+      objectReference: {fileID: 6462547940109628560, guid: 3992d4fad1b345349aa955c49ec79eee,
+        type: 3}
+    - target: {fileID: -5569449977604626760, guid: 6c660f2791ba8d547a2d821d169693a8,
+        type: 3}
+      propertyPath: _spellProjectileSpawner
+      value: 
+      objectReference: {fileID: 1723528281}
+    - target: {fileID: 528466769610409543, guid: 6c660f2791ba8d547a2d821d169693a8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 528466769610409543, guid: 6c660f2791ba8d547a2d821d169693a8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 528466769610409543, guid: 6c660f2791ba8d547a2d821d169693a8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 528466769610409543, guid: 6c660f2791ba8d547a2d821d169693a8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 528466769610409543, guid: 6c660f2791ba8d547a2d821d169693a8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 528466769610409543, guid: 6c660f2791ba8d547a2d821d169693a8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 528466769610409543, guid: 6c660f2791ba8d547a2d821d169693a8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 528466769610409543, guid: 6c660f2791ba8d547a2d821d169693a8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 528466769610409543, guid: 6c660f2791ba8d547a2d821d169693a8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 528466769610409543, guid: 6c660f2791ba8d547a2d821d169693a8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4600467134774589839, guid: 6c660f2791ba8d547a2d821d169693a8,
+        type: 3}
+      propertyPath: m_Name
+      value: Spell
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6c660f2791ba8d547a2d821d169693a8, type: 3}
+--- !u!4 &561284436 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 528466769610409543, guid: 6c660f2791ba8d547a2d821d169693a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 561284435}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &585659130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1410,6 +1520,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1882613483}
+    - targetCorrespondingSourceObject: {fileID: 3686875047460213120, guid: ff560a2dc8e064b44ba8c8595a5a4907,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1723528281}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4189732505631763632, guid: ff560a2dc8e064b44ba8c8595a5a4907,
         type: 3}
@@ -1491,6 +1605,7 @@ MonoBehaviour:
   _playerWeapons:
   - {fileID: 1369124749}
   - {fileID: 457875098}
+  - {fileID: 1305765172}
   _animation: {fileID: 0}
   OnAttack:
     m_PersistentCalls:
@@ -1548,6 +1663,7 @@ MonoBehaviour:
         m_CallState: 2
   _swordSocket: {fileID: 1583231458}
   _bowSocket: {fileID: 2092758335}
+  _spellSocket: {fileID: 1891017317}
   OnSwitchWeapon:
     m_PersistentCalls:
       m_Calls:
@@ -3010,6 +3126,18 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1305765172 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -5569449977604626760, guid: 6c660f2791ba8d547a2d821d169693a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 561284435}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b55cbfcc4bfcce44a4524b4baa2f6b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1346604008
 GameObject:
   m_ObjectHideFlags: 0
@@ -3735,6 +3863,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1723528280
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1723528281}
+  m_Layer: 7
+  m_Name: SpellSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1723528281
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723528280}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.2, z: 0.86}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 761140852}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1813706679
 GameObject:
   m_ObjectHideFlags: 0
@@ -4057,6 +4216,38 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 761140852}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1891017316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1891017317}
+  m_Layer: 0
+  m_Name: SpellSocket
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1891017317
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891017316}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 561284436}
+  m_Father: {fileID: 2659613806947605665}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1969321467
 GameObject:
@@ -8400,6 +8591,7 @@ Transform:
   - {fileID: 6711629370861682543}
   - {fileID: 1583231458}
   - {fileID: 2092758335}
+  - {fileID: 1891017317}
   m_Father: {fileID: 3435223134578831552}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2718950367807266232

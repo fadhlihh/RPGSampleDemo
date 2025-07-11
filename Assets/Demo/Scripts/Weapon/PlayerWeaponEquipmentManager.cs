@@ -7,6 +7,8 @@ public class PlayerWeaponEquipmentManager : WeaponEquipmentManager
     private Transform _swordSocket;
     [SerializeField]
     private Transform _bowSocket;
+    [SerializeField]
+    private Transform _spellSocket;
 
     public UnityEvent<EWeaponType> OnSwitchWeapon;
 
@@ -20,6 +22,11 @@ public class PlayerWeaponEquipmentManager : WeaponEquipmentManager
         if (_bowSocket != null)
         {
             _weaponSockets.Add(EWeaponType.Range, _bowSocket);
+        }
+
+        if (_spellSocket != null)
+        {
+            _weaponSockets.Add(EWeaponType.Spell, _spellSocket);
         }
     }
 
