@@ -1,21 +1,31 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerCharacter : Character, IRolling
+public class PlayerCharacter : Character, IRolling, IDamagable
 {
     [SerializeField]
     private PlayerWeaponEquipmentManager _weaponEquipmentManager;
     [SerializeField]
+    private GameObject _impactPrefab;
+    [SerializeField]
     private UnityEvent _onCharacterRoll;
+
+    public UnityEvent OnDamage;
+    public UnityEvent OnDeath;
 
     public DirectionalCharacterMovement DirectionalCharacterMovement { get => CharacterMovement as DirectionalCharacterMovement; }
     public PlayerWeaponEquipmentManager WeaponEquipmentManager { get { return _weaponEquipmentManager; } }
     public UnityEvent OnCharacterRoll => _onCharacterRoll;
     public bool IsRolling { get; private set; }
 
+    public int MaximumHealthPoint { get; private set; } = 100;
+    public int HealthPoint { get; private set; }
+    public bool IsDead { get; private set; }
+
     protected override void Awake()
     {
         base.Awake();
+        HealthPoint = MaximumHealthPoint;
         if (!_weaponEquipmentManager)
         {
             _weaponEquipmentManager = GetComponent<PlayerWeaponEquipmentManager>();
@@ -69,5 +79,35 @@ public class PlayerCharacter : Character, IRolling
     {
         IsRolling = false;
         DirectionalCharacterMovement.IsAbleToMove = true;
+    }
+
+    public void Damage(DamageData damageData)
+    {
+        if (!IsDead)
+        {
+            HealthPoint -= damageData.HitPoint;
+            OnDamage?.Invoke();
+            if (HealthPoint <= 0)
+            {
+                Death();
+            }
+            Instantiate(_impactPrefab, damageData.HitImpactPosition, Quaternion.identity);
+        }
+    }
+
+    public void Death()
+    {
+        IsDead = true;
+        OnDeath?.Invoke();
+    }
+
+    public void DestroyCharacter()
+    {
+        Destroy(gameObject, 3);
+    }
+
+    public void Heal(int value)
+    {
+        throw new System.NotImplementedException();
     }
 }

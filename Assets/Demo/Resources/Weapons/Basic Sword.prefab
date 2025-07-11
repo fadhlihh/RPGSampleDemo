@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6379803242479619870}
   - component: {fileID: 1337207599105518576}
   - component: {fileID: 3238125870030880102}
+  - component: {fileID: 2499093754729429540}
   m_Layer: 0
   m_Name: Basic Sword
   m_TagString: Untagged
@@ -104,3 +105,30 @@ MonoBehaviour:
   _damage: 30
   _socket: {fileID: 0}
   _ownerCharacter: {fileID: 0}
+  _maxCombo: 1
+  _comboDuration: 3
+  _hitboxSize: {x: 1, y: 1, z: 1}
+  _hitboxOffset: {x: 0, y: 0, z: 0}
+  _hitableLayer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &2499093754729429540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2204249638584032862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 1
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff

@@ -83,6 +83,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2114114926043907234}
+    - targetCorrespondingSourceObject: {fileID: 8987235204705296748, guid: 5b2a427b4398f50428ef5bf35072656e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9206002733094149574}
   m_SourcePrefab: {fileID: 100100000, guid: 5b2a427b4398f50428ef5bf35072656e, type: 3}
 --- !u!1 &4189732505631763632 stripped
 GameObject:
@@ -150,6 +154,10 @@ MonoBehaviour:
   _characterMovement: {fileID: 0}
   _characterAnimation: {fileID: 0}
   _lookPivot: {fileID: 6228028412190111285}
+  _weaponEquipmentManager: {fileID: 0}
+  _onCharacterRoll:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2114114926043907234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +171,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 0}
+  OnBeginAttackingAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndAttackingAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBeginHeavyAttackingAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndHeavyAttackingAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBeginTraceHitAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndTraceHitAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBeginDeathAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndDeathAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBeginRollingAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+  OnEndRollingAnimation:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &9206002733094149574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4189732505631763632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 1
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!4 &6228028412190111285 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1221495427064347625, guid: 5b2a427b4398f50428ef5bf35072656e,
