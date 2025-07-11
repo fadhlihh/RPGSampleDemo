@@ -19,4 +19,14 @@ public class PlayerAnimation : CombatAnimation
         _animator.applyRootMotion = false;
         OnEndRollingAnimation?.Invoke();
     }
+
+    public void OnBeginLockTarget()
+    {
+        _animator.SetBool("IsLockTarget", true);
+    }
+
+    public void OnEndLockTarget()
+    {
+        _animator.SetBool("IsLockTarget", false);
+    }
 }

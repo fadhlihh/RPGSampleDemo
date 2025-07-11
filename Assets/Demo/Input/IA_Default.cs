@@ -144,6 +144,15 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LockTarget"",
+                    ""type"": ""Button"",
+                    ""id"": ""f18d3e87-d896-4db8-93ce-041675ee7137"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -311,6 +320,17 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
                     ""action"": ""Block"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""30b52bb1-8e5c-4cf9-9f8e-9633aebab024"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LockTarget"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -353,6 +373,7 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
         m_General_LightAttack = m_General.FindAction("LightAttack", throwIfNotFound: true);
         m_General_HeavyAttack = m_General.FindAction("HeavyAttack", throwIfNotFound: true);
         m_General_Block = m_General.FindAction("Block", throwIfNotFound: true);
+        m_General_LockTarget = m_General.FindAction("LockTarget", throwIfNotFound: true);
     }
 
     ~@IA_Default()
@@ -439,6 +460,7 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
     private readonly InputAction m_General_LightAttack;
     private readonly InputAction m_General_HeavyAttack;
     private readonly InputAction m_General_Block;
+    private readonly InputAction m_General_LockTarget;
     /// <summary>
     /// Provides access to input actions defined in input action map "General".
     /// </summary>
@@ -474,6 +496,10 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "General/Block".
         /// </summary>
         public InputAction @Block => m_Wrapper.m_General_Block;
+        /// <summary>
+        /// Provides access to the underlying input action "General/LockTarget".
+        /// </summary>
+        public InputAction @LockTarget => m_Wrapper.m_General_LockTarget;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -518,6 +544,9 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
             @Block.started += instance.OnBlock;
             @Block.performed += instance.OnBlock;
             @Block.canceled += instance.OnBlock;
+            @LockTarget.started += instance.OnLockTarget;
+            @LockTarget.performed += instance.OnLockTarget;
+            @LockTarget.canceled += instance.OnLockTarget;
         }
 
         /// <summary>
@@ -547,6 +576,9 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
             @Block.started -= instance.OnBlock;
             @Block.performed -= instance.OnBlock;
             @Block.canceled -= instance.OnBlock;
+            @LockTarget.started -= instance.OnLockTarget;
+            @LockTarget.performed -= instance.OnLockTarget;
+            @LockTarget.canceled -= instance.OnLockTarget;
         }
 
         /// <summary>
@@ -655,5 +687,12 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnBlock(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "LockTarget" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnLockTarget(InputAction.CallbackContext context);
     }
 }
