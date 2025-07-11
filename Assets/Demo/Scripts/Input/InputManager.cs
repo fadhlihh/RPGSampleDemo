@@ -8,6 +8,8 @@ public class InputManager : Singleton<InputManager>, IGeneralActions
     public Action<Vector2> OnMoveInput;
     public Action<bool> OnSprintInput;
     public Action OnRollInput;
+    public Action OnLightAttackInput;
+    public Action OnHeavyAttackInput;
 
     private IA_Default _inputAction;
     public InputManager()
@@ -53,6 +55,21 @@ public class InputManager : Singleton<InputManager>, IGeneralActions
         if (context.performed)
         {
             OnRollInput?.Invoke();
+        }
+    }
+
+    public void OnLightAttack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            OnLightAttackInput?.Invoke();
+        }
+    }
+    public void OnHeavyAttack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            OnHeavyAttackInput?.Invoke();
         }
     }
 }

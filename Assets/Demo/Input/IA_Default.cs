@@ -117,6 +117,24 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LightAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""158cf2b5-0945-4c07-823a-6771636f9353"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HeavyAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""7de89c16-32a6-4c6e-9430-20b27a86ed1c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -251,6 +269,28 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
                     ""action"": ""Roll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""70373ad2-9df5-4a9e-9f3b-45cd292827ae"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LightAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a6151acc-414a-46ed-859c-e5289a949a02"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HeavyAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -290,6 +330,8 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
         m_General_Movement = m_General.FindAction("Movement", throwIfNotFound: true);
         m_General_Sprint = m_General.FindAction("Sprint", throwIfNotFound: true);
         m_General_Roll = m_General.FindAction("Roll", throwIfNotFound: true);
+        m_General_LightAttack = m_General.FindAction("LightAttack", throwIfNotFound: true);
+        m_General_HeavyAttack = m_General.FindAction("HeavyAttack", throwIfNotFound: true);
     }
 
     ~@IA_Default()
@@ -373,6 +415,8 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
     private readonly InputAction m_General_Movement;
     private readonly InputAction m_General_Sprint;
     private readonly InputAction m_General_Roll;
+    private readonly InputAction m_General_LightAttack;
+    private readonly InputAction m_General_HeavyAttack;
     /// <summary>
     /// Provides access to input actions defined in input action map "General".
     /// </summary>
@@ -396,6 +440,14 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "General/Roll".
         /// </summary>
         public InputAction @Roll => m_Wrapper.m_General_Roll;
+        /// <summary>
+        /// Provides access to the underlying input action "General/LightAttack".
+        /// </summary>
+        public InputAction @LightAttack => m_Wrapper.m_General_LightAttack;
+        /// <summary>
+        /// Provides access to the underlying input action "General/HeavyAttack".
+        /// </summary>
+        public InputAction @HeavyAttack => m_Wrapper.m_General_HeavyAttack;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -431,6 +483,12 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
             @Roll.started += instance.OnRoll;
             @Roll.performed += instance.OnRoll;
             @Roll.canceled += instance.OnRoll;
+            @LightAttack.started += instance.OnLightAttack;
+            @LightAttack.performed += instance.OnLightAttack;
+            @LightAttack.canceled += instance.OnLightAttack;
+            @HeavyAttack.started += instance.OnHeavyAttack;
+            @HeavyAttack.performed += instance.OnHeavyAttack;
+            @HeavyAttack.canceled += instance.OnHeavyAttack;
         }
 
         /// <summary>
@@ -451,6 +509,12 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
             @Roll.started -= instance.OnRoll;
             @Roll.performed -= instance.OnRoll;
             @Roll.canceled -= instance.OnRoll;
+            @LightAttack.started -= instance.OnLightAttack;
+            @LightAttack.performed -= instance.OnLightAttack;
+            @LightAttack.canceled -= instance.OnLightAttack;
+            @HeavyAttack.started -= instance.OnHeavyAttack;
+            @HeavyAttack.performed -= instance.OnHeavyAttack;
+            @HeavyAttack.canceled -= instance.OnHeavyAttack;
         }
 
         /// <summary>
@@ -538,5 +602,19 @@ public partial class @IA_Default: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRoll(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "LightAttack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnLightAttack(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "HeavyAttack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnHeavyAttack(InputAction.CallbackContext context);
     }
 }

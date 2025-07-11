@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerAnimation : CharacterAnimation
+public class PlayerAnimation : CombatAnimation
 {
     public UnityEvent OnBeginRollingAnimation;
     public UnityEvent OnEndRollingAnimation;
