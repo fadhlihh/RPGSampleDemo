@@ -40,7 +40,6 @@ public abstract class WeaponEquipmentManager : MonoBehaviour
         {
             IsAttacking = true;
             _playerWeapons[_currentWeaponIndex].LightAttack();
-            Debug.Log(_playerWeapons[_currentWeaponIndex].Combo);
             OnAttack.Invoke(_playerWeapons[_currentWeaponIndex].Combo);
         }
     }
