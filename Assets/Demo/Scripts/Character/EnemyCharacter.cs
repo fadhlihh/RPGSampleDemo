@@ -12,6 +12,7 @@ public class EnemyCharacter : Character, IDamagable
 
     public UnityEvent OnDamage;
     public UnityEvent OnDeath;
+    public UnityEvent OnBounceback;
 
     protected override void Awake()
     {
@@ -47,5 +48,10 @@ public class EnemyCharacter : Character, IDamagable
     public void DestroyCharacter()
     {
         Destroy(gameObject, 3);
+    }
+
+    public void BounceBack()
+    {
+        OnBounceback?.Invoke();
     }
 }

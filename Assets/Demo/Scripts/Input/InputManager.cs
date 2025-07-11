@@ -10,6 +10,8 @@ public class InputManager : Singleton<InputManager>, IGeneralActions
     public Action OnRollInput;
     public Action OnLightAttackInput;
     public Action OnHeavyAttackInput;
+    public Action OnStartBlockInput;
+    public Action OnStopBlockInput;
 
     private IA_Default _inputAction;
     public InputManager()
@@ -70,6 +72,18 @@ public class InputManager : Singleton<InputManager>, IGeneralActions
         if (context.performed)
         {
             OnHeavyAttackInput?.Invoke();
+        }
+    }
+
+    public void OnBlock(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            OnStartBlockInput?.Invoke();
+        }
+        if (context.canceled)
+        {
+            OnStopBlockInput?.Invoke();
         }
     }
 }

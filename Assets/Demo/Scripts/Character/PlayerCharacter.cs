@@ -6,6 +6,8 @@ public class PlayerCharacter : Character, IRolling, IDamagable
     [SerializeField]
     private PlayerWeaponEquipmentManager _weaponEquipmentManager;
     [SerializeField]
+    private CharacterDefense _characterDefense;
+    [SerializeField]
     private GameObject _impactPrefab;
     [SerializeField]
     private UnityEvent _onCharacterRoll;
@@ -15,6 +17,7 @@ public class PlayerCharacter : Character, IRolling, IDamagable
 
     public DirectionalCharacterMovement DirectionalCharacterMovement { get => CharacterMovement as DirectionalCharacterMovement; }
     public PlayerWeaponEquipmentManager WeaponEquipmentManager { get { return _weaponEquipmentManager; } }
+    public CharacterDefense CharacterDefense { get => _characterDefense; }
     public UnityEvent OnCharacterRoll => _onCharacterRoll;
     public bool IsRolling { get; private set; }
 
@@ -29,6 +32,10 @@ public class PlayerCharacter : Character, IRolling, IDamagable
         if (!_weaponEquipmentManager)
         {
             _weaponEquipmentManager = GetComponent<PlayerWeaponEquipmentManager>();
+        }
+        if (!_characterDefense)
+        {
+            _characterDefense = GetComponent<CharacterDefense>();
         }
     }
 
@@ -50,6 +57,8 @@ public class PlayerCharacter : Character, IRolling, IDamagable
         InputManager.Instance.OnRollInput += Roll;
         InputManager.Instance.OnLightAttackInput += WeaponEquipmentManager.LightAttack;
         InputManager.Instance.OnHeavyAttackInput += WeaponEquipmentManager.HeavyAttack;
+        InputManager.Instance.OnStartBlockInput += CharacterDefense.StartBlock;
+        InputManager.Instance.OnStopBlockInput += CharacterDefense.StopBlock;
     }
 
     private void UnBindingInput()
@@ -59,12 +68,14 @@ public class PlayerCharacter : Character, IRolling, IDamagable
         InputManager.Instance.OnRollInput -= Roll;
         InputManager.Instance.OnLightAttackInput -= WeaponEquipmentManager.LightAttack;
         InputManager.Instance.OnHeavyAttackInput -= WeaponEquipmentManager.HeavyAttack;
+        InputManager.Instance.OnStartBlockInput -= CharacterDefense.StartBlock;
+        InputManager.Instance.OnStopBlockInput -= CharacterDefense.StopBlock;
     }
 
     public void Roll()
     {
         bool isMoving = DirectionalCharacterMovement.MoveDirection.magnitude > 0.01f;
-        if (isMoving)
+        if (isMoving && !WeaponEquipmentManager.IsAttacking)
         {
             DirectionalCharacterMovement.IsAbleToMove = false;
             IsRolling = true;
@@ -85,8 +96,16 @@ public class PlayerCharacter : Character, IRolling, IDamagable
     {
         if (!IsDead)
         {
-            HealthPoint -= damageData.HitPoint;
-            OnDamage?.Invoke();
+            EnemyCharacter enemyCharacter = damageData.Instigator as EnemyCharacter;
+            HealthPoint -= (damageData.HitPoint + (CharacterDefense.IsBlocking ? CharacterDefense.DamageModifier : 0));
+            if (!CharacterDefense.IsBlocking)
+            {
+                OnDamage?.Invoke();
+            }
+            else
+            {
+                enemyCharacter.BounceBack();
+            }
             if (HealthPoint <= 0)
             {
                 Death();
@@ -108,6 +127,6 @@ public class PlayerCharacter : Character, IRolling, IDamagable
 
     public void Heal(int value)
     {
-        throw new System.NotImplementedException();
+
     }
 }
