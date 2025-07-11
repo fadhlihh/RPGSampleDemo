@@ -40,6 +40,16 @@ public abstract class ControllerCharacterMovement : CharacterMovement
     protected override void Update()
     {
         base.Update();
+        IStamina staminaSystem = GetComponent<IStamina>();
+        bool isStaminaAvaliable = staminaSystem != null ? GetComponent<IStamina>().GetIsStaminaAvailable(5) : true;
+        if (!isStaminaAvaliable)
+        {
+            IsSprint = false;
+        }
+        if (isStaminaAvaliable && IsSprint)
+        {
+            staminaSystem.DecreaseStamina(10 * Time.deltaTime);
+        }
         CalculateAcceleration();
         ResetVelocityY();
         Move();

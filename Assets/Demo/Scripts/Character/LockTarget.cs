@@ -44,6 +44,10 @@ public class LockTarget : MonoBehaviour
     {
         IsLockTarget = true;
         Target = enemy;
+        if (Target)
+        {
+            Target.EnemyUI.ShowTarget();
+        }
         enemy.OnDeath.AddListener(StopLockTarget);
         OnStartLockTarget?.Invoke();
     }
@@ -52,6 +56,10 @@ public class LockTarget : MonoBehaviour
     {
         IsLockTarget = false;
         OnStopLockTarget?.Invoke();
+        if (Target)
+        {
+            Target.EnemyUI.HideTarget();
+        }
         Target = null;
     }
 

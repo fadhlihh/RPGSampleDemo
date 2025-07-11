@@ -5,7 +5,10 @@ public class EnemyCharacter : Character, IDamagable
 {
     [SerializeField]
     private GameObject _impactPrefab;
+    [SerializeField]
+    private EnemyUI _enemyUI;
 
+    public EnemyUI EnemyUI { get => _enemyUI; }
     public int HealthPoint { get; private set; }
     public int MaximumHealthPoint { get; private set; } = 100;
     public bool IsDead { get; private set; } = false;
@@ -26,6 +29,7 @@ public class EnemyCharacter : Character, IDamagable
         {
             Instantiate(_impactPrefab, damageData.HitImpactPosition, Quaternion.identity);
             HealthPoint -= damageData.HitPoint;
+            EnemyUI.SetHealthBarValue(HealthPoint, MaximumHealthPoint);
             OnDamage?.Invoke();
             if (HealthPoint <= 0)
             {

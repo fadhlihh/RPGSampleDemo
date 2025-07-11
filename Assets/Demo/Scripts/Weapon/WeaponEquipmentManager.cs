@@ -27,6 +27,7 @@ public abstract class WeaponEquipmentManager : MonoBehaviour
         {
             _animation = GetComponent<CombatAnimation>();
         }
+        HUDManager.Instance.WeaponSlotUI.SetIcon(_playerWeapons[_currentWeaponIndex].Icon);
         _animation.OnBeginTraceHitAnimation.AddListener(_playerWeapons[_currentWeaponIndex].StartTraceHit);
         _animation.OnEndTraceHitAnimation.AddListener(_playerWeapons[_currentWeaponIndex].StopTraceHit);
         InitSocket();
@@ -44,7 +45,7 @@ public abstract class WeaponEquipmentManager : MonoBehaviour
         }
     }
 
-    public void HeavyAttack()
+    public virtual void HeavyAttack()
     {
         bool isRolling = GetComponent<IRolling>() != null ? GetComponent<IRolling>().IsRolling : false;
         bool isGrounded = GetComponent<CharacterMovement>() != null ? GetComponent<CharacterMovement>().IsGrounded : true;

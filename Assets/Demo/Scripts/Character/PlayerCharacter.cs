@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerCharacter : Character, IRolling, IDamagable
+public class PlayerCharacter : Character, IRolling, IDamagable, IStamina
 {
     [SerializeField]
     private PlayerWeaponEquipmentManager _weaponEquipmentManager;
@@ -9,6 +9,8 @@ public class PlayerCharacter : Character, IRolling, IDamagable
     private CharacterDefense _characterDefense;
     [SerializeField]
     private GameObject _impactPrefab;
+    [SerializeField]
+    private int _staminaRegenSpeed = 1;
     [SerializeField]
     private UnityEvent _onCharacterRoll;
 
@@ -25,10 +27,14 @@ public class PlayerCharacter : Character, IRolling, IDamagable
     public int HealthPoint { get; private set; }
     public bool IsDead { get; private set; }
 
+    public float MaximumStamina { get; private set; } = 100;
+    public float Stamina { get; private set; }
+
     protected override void Awake()
     {
         base.Awake();
         HealthPoint = MaximumHealthPoint;
+        Stamina = MaximumStamina;
         if (!_weaponEquipmentManager)
         {
             _weaponEquipmentManager = GetComponent<PlayerWeaponEquipmentManager>();
@@ -36,6 +42,14 @@ public class PlayerCharacter : Character, IRolling, IDamagable
         if (!_characterDefense)
         {
             _characterDefense = GetComponent<CharacterDefense>();
+        }
+    }
+
+    private void Update()
+    {
+        if (!CharacterMovement.IsSprint)
+        {
+            IncreaseStamina(_staminaRegenSpeed * Time.deltaTime);
         }
     }
 
@@ -77,8 +91,9 @@ public class PlayerCharacter : Character, IRolling, IDamagable
     public void Roll()
     {
         bool isMoving = DirectionalCharacterMovement.MoveDirection.magnitude > 0.01f;
-        if (isMoving && !WeaponEquipmentManager.IsAttacking)
+        if (isMoving && !WeaponEquipmentManager.IsAttacking && GetIsStaminaAvailable(40))
         {
+            DecreaseStamina(40);
             DirectionalCharacterMovement.IsAbleToMove = false;
             IsRolling = true;
             Transform cameraTransform = Camera.main.transform;
@@ -100,6 +115,7 @@ public class PlayerCharacter : Character, IRolling, IDamagable
         {
             EnemyCharacter enemyCharacter = damageData.Instigator as EnemyCharacter;
             HealthPoint -= (damageData.HitPoint + (CharacterDefense.IsBlocking ? CharacterDefense.DamageModifier : 0));
+            HUDManager.Instance.PlayerStatusUI.SetHealthBarValue(HealthPoint, MaximumHealthPoint);
             if (!CharacterDefense.IsBlocking)
             {
                 OnDamage?.Invoke();
@@ -107,6 +123,11 @@ public class PlayerCharacter : Character, IRolling, IDamagable
             else
             {
                 enemyCharacter.BounceBack();
+                DecreaseStamina(30);
+                if (!GetIsStaminaAvailable(30))
+                {
+                    CharacterDefense.StopBlock();
+                }
             }
             if (HealthPoint <= 0)
             {
@@ -130,5 +151,24 @@ public class PlayerCharacter : Character, IRolling, IDamagable
     public void Heal(int value)
     {
 
+    }
+
+    public void DecreaseStamina(float value)
+    {
+        Stamina -= value;
+        Stamina = Mathf.Clamp(Stamina, 0, 100);
+        HUDManager.Instance.PlayerStatusUI.SetStaminaBarValue(Stamina, MaximumStamina);
+    }
+
+    public void IncreaseStamina(float value)
+    {
+        Stamina += value;
+        Stamina = Mathf.Clamp(Stamina, 0, 100);
+        HUDManager.Instance.PlayerStatusUI.SetStaminaBarValue(Stamina, MaximumStamina);
+    }
+
+    public bool GetIsStaminaAvailable(int value)
+    {
+        return Stamina > value;
     }
 }
